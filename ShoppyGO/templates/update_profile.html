@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block title %}
+Update Profile | ShoppyGo
+{% endblock  %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/user_profile.css' %}">
+    <div class="divider">
+        <span class="fw-light">USER PROFILE UPDATE</span>
+    </div>
+    
+    <section class="profile">
+    
+        <div class="cprofile">
+            <div class="borderr d-flex p-4  gap-3">
+                <div class="veer">
+                    <div class="qq d-flex flex-column gap-3">
+                        <a href="{%url 'profile' user.id%}" >Profile</a>
+                        <a href="{%url 'order_history_view' %}">Order History</a>
+                        <a class="active" href="{%url 'update_profile' user.id  %}">Update Profile</a>
+                    </div>
+            
+                    <div class="w-100 d-flex justify-content-end">
+            
+                        <form method="post"" action="{% url 'logout' %}">
+                        {% csrf_token %}
+                        <button class="logg" type="submit">Logout
+                            <i class="bi bi-box-arrow-right"></i>
+                        </button>
+                        </form>
+                        
+                    </div>
+                </div>
+    
+                <div class="mo d-flex flex-column align-items-center justify-content-start gap-4">
+                    <form class="w-100" method="post" action="{% url 'update_profile' user.id %}" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="submit-btn">Save</button>
+                    </form>
+                </div>
+            </div>    
+        </div>
+</section>
+{% endblock %}
+

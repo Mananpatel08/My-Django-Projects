@@ -1,0 +1,97 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %}
+shopAll | ShoppyGo
+{% endblock  %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/shopAll2.css' %}">
+
+<section class="shopAll">
+
+    <div class="container">
+        
+        <div class="filterBar">
+            <div class="nav">
+                <p> <span><a href="{% url 'home' %}">Home</a></span> 
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20" aria-hidden="true" class="sZkQOfF mb-1 mx-2 "><path fill-rule="evenodd" d="M8.70710678,4.99810828 L15.068,11.3651083 L15.0722115,11.3620693 L15.7793183,12.0691761 L15.776,12.0721083 L15.7782433,12.0758831 L15.0711365,12.7829899 L15.069,12.7801083 L8.70710678,19.1434929 L8,18.4363861 L14.361,12.0721083 L8,5.70521506 L8.70710678,4.99810828 Z"></path></svg>
+                    <span>Shop All</span>  </p>
+             </div>
+
+             <div class="fi">
+                 <p class="border-bottom pb-2 fs-5">Browse by</p>
+                 <p class="d-flex flex-column">
+                 <a href="">All Products</a>
+                </p>
+             </div>
+
+             <div class="si">
+                <p class="border-bottom pb-2 fs-5">Filter by</p>
+                <button class="d-flex justify-content-between   m-0 px-0 border-bottom pb-1 w-100"> <span>Price</span> <i class="bi bi-plus"></i></button>
+                <button class="d-flex justify-content-between   m-0 mt-1 px-0 border-bottom pb-1 w-100"> <span>Size</span> <i class="bi bi-plus"></i></button>
+                <button class="d-flex justify-content-between  m-0 mt-1 px-0 border-bottom pb-1 w-100"> <span>Color</span><i class="bi bi-plus"></i> </button>
+                <button class="d-flex justify-content-between   m-0  mt-1  px-0 border-bottom pb-1 w-100"> <span>Type</span> <i class="bi bi-plus"></i></button>
+            </div>
+        </div>
+
+        <div class="side d-flex flex-column">
+            <div class="heading"> <p>All Products</p> </div>
+             <div class="sort d-flex justify-content-between">
+                <p> Showing {{ product_count }} products </p>
+
+
+                <li class="nav-item dropdown">
+                    <a class="d-flex nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span> {% if sort_by == 'date' %}
+                            Sort By : Newest
+                        {% elif sort_by == 'low_to_high' %}
+                            Sort By : Price (Low to High)
+                        {% elif sort_by == 'high_to_low' %}
+                            Sort By : Price (High to Low)
+                        {% else %}
+                            Sort By : Recommended
+                        {% endif %}</span>
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20" class="sQHTsrM"><path fill-rule="evenodd" d="M18.2546728,8.18171329 L18.9617796,8.88882007 L12.5952867,15.2537133 L12.5978964,15.2558012 L11.8907896,15.962908 L11.8882867,15.9607133 L11.8874628,15.9617796 L11.180356,15.2546728 L11.1812867,15.2527133 L4.81828671,8.88882007 L5.52539349,8.18171329 L11.8882867,14.5457133 L18.2546728,8.18171329 Z"></path></svg>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item {% if sort_by == 'date' %}active{% endif %}" href="?sort_by=date">Newest</a></li>
+                        <li><a class="dropdown-item {% if sort_by == 'low_to_high' %}active{% endif %}" href="?sort_by=low_to_high">Price (Low to High)</a></li>
+                        <li><a class="dropdown-item {% if sort_by == 'high_to_low' %}active{% endif %}" href="?sort_by=high_to_low">Price (High to Low)</a></li>
+                    </ul>
+                </li>
+                
+             </div>
+            <div class="products">
+
+                {% for product in products  %}
+                <div class="product">
+                    <div class="images">
+                        <a href="{%url 'product_detail' product.id %}"><img src="{{product.image.url}}" alt=""></a>
+                    </div>
+                    <div class="info my-3">
+                        <p>{{ product.name }}</p>
+                        <span>${{ product.price }}</span>
+                        <button 
+                                    class="open-modal-btn my-0" 
+                                    data-bs-toggle="modal" 
+                                    data-bs-target="#staticBackdrop"
+                                    data-product-id="{{ product.id }}"  
+                                    data-name="{{ product.name }}" 
+                                    data-image="{{ product.image.url }}" 
+                                    data-price="{{ product.price }}" >
+                                Add to cart
+                        </button>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+</section>
+
+
+
+{% endblock  %}

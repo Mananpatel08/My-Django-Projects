@@ -1,0 +1,338 @@
+@import url('https://fonts.googleapis.com/css2?family=Nova+Mono&display=swap');
+/* font-family: "Nova Mono", serif; */
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+@font-face {
+    font-family: proxima;
+    src: url("../fonts/font3.otf") format("opentype");
+}
+:root{
+  --hover : #926402;
+}
+body {
+    margin: 0;
+    padding: 0; 
+    line-height: 1.6; 
+}
+/* section-1 */
+.navbar{
+    width: 100%;
+}
+.top{
+    width: 70%;
+}
+/* section-2 */
+.container2{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 70px;
+}
+/* section-3 */
+.feature{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+/* section-4 */
+.footer{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: #e7eeea;
+}
+/* -------------------search-bar---------------- */
+.ui-input-container {
+    position: relative;
+  }
+  
+  .ui-input {
+    width: 100%;
+    padding: 10px 10px 10px 40px;
+    font-size: 14px;
+    border: none;
+    border-bottom: 1px solid #000000d4;
+    outline: none;
+    background-color: transparent;
+    transition: border-color 0.3s;
+  }
+
+  .ui-input:focus {
+    border-color: #6c63ff;
+  }
+  
+  .ui-input-underline {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background-color: #6c63ff;
+    transform: scaleX(0);
+    transition: transform 0.3s;
+  }
+  .ui-input-container input::placeholder{
+    font-size: 12px;
+    font-family: proxima;
+    color: rgba(0, 0, 0, 0.839);
+  }
+  .ui-input:focus + .ui-input-underline {
+    transform: scaleX(1);
+  }
+
+  .ui-input-highlight {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    background-color: rgba(108, 99, 255, 0.1);
+    transition: width 0.3s;
+  }
+  
+  .ui-input:focus ~ .ui-input-highlight {
+    width: 100%;
+  }
+  
+  .ui-input-icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    transition: color 0.3s;
+  }
+  
+  .ui-input:focus ~ .ui-input-icon {
+    color: #6c63ff;
+  }
+  
+  .ui-input-icon svg {
+    width: 20px;
+    height: 20px;
+  }  
+/* -------------------search-bar-end---------------- */
+
+.authentication .lo a{
+  font-family: proxima;
+  font-size: 14px;
+  color: rgb(9, 9, 9);
+  text-decoration: none;
+  background-color: transparent;
+  transition: color 0.2s ease-in-out;
+}
+.authentication .lo{
+  border: none;
+  background-color: transparent;
+}
+form button{
+  font-size: 12px;
+  background-color: transparent;
+  border: none;
+}
+.login .authentication a:hover{
+  color: #926402;
+}
+
+/* --------------------login-forms---------------- */
+.custom-font-large { font-size: 12px; }
+
+.mid p{
+    font-family: "Nova Mono", serif;
+    
+}
+.navbar-nav a{
+    font-family: proxima;
+    font-size: 14px;
+    padding: 10px;
+    margin: 0px 10px;
+    
+}
+/* -------------------section-end-1--------------- */
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    width: 80%;
+    margin: 20px auto;
+}
+.divider span{
+    font-family: "Josefin Sans", serif;
+}
+.divider::before,
+.divider::after {
+    content: "";
+    flex: 1;
+    border-bottom: 1px solid #000000;
+}
+.divider span {
+    padding: 0 10px;
+    font-weight: bold;
+    color: #555;
+}
+/* -------------------carousel------------- */
+.carousel{
+    width: 80%;
+}
+.carousel-item {
+    height: 600px;
+}
+/* ----------------------2nd-divider----------- */
+.divider2 {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  width: 70%;
+  margin: 50px auto;
+}
+.divider2 span{
+  font-family: "Josefin Sans", serif;
+}
+.divider2::before,
+.divider2::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #000000;
+}
+.divider2 span {
+  padding: 0 10px;
+  font-weight: bold;
+  color: #555;
+}
+/* ----------------------section-3----------- */
+.items{
+  width: 80%;
+  font-family: "Josefin Sans", serif;
+  font-weight: 300;
+}
+.first img,
+.second img,
+.third img {
+    width: 306px; 
+    height: 406px;
+    object-fit: cover; 
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+.first p,
+.second p,
+.third p{
+  margin: 0px;
+  margin-top: 10px;
+  color: #8a8686;
+}
+.first span,
+.second span,
+.third span{
+  color: #8a8686;
+}
+.first button,
+.second button,
+.third button{
+  width: 100%;
+  background-color: transparent;
+  font-family: "Josefin Sans", serif;
+  font-weight: 300;
+  padding: 5px;
+  border: 1px solid black;
+  color: #8a8686;
+}
+.shopAll button{
+  background-color: transparent;
+  font-family: "Josefin Sans", serif;
+  font-weight: 300;
+  padding: 5px 35px;
+  margin: 60px 0px;
+  border: 1px solid black;
+}
+/* --------------------------------------footer---------------- */
+.subFooter{
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+  gap: 10px;
+}
+.down{
+  display: flex;
+  gap: 100px;
+  margin-bottom: 100px;
+}
+
+
+.up {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  margin: 20px auto;
+}
+.up::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #000000;
+  margin-bottom: 10px;
+}
+.up h1 {
+  padding-right: 10px;
+  font-family: "Nova Mono", serif;
+  color: #000000;
+}
+
+.down a,
+.mid a,
+.right a{
+  font-family: "Josefin Sans", serif;
+  font-weight: 300;
+  text-decoration: none;
+  color: #8a8686;
+
+}
+.right p{
+  font-family: "Josefin Sans", serif;
+  font-weight: 300;
+  color: #8a8686;
+}
+.rig p{
+  font-family: "Josefin Sans", serif;
+  font-weight: 300;
+  margin-bottom: 5px;
+  color: #8a8686;
+}
+.rig label{
+  font-family: "Josefin Sans", serif;
+  font-weight: 300;
+  color: #8a8686;
+  font-size: 14px;
+}
+.rig input{
+  font-family: "Josefin Sans", serif;
+  font-weight: 300;
+  background-color: transparent;
+  outline: none;
+  padding: 5px;
+  border: 1px solid black;
+}
+.rig .rr{
+  display: flex;
+  gap: 5px;
+  margin: 10px 0px;
+}
+.rig .rr span{
+  font-family: "Josefin Sans", serif;
+  font-weight: 300;
+  font-size: 12px;
+  color: #8a8686;
+}
+.rig button{
+  background-color: transparent;
+  font-family: "Josefin Sans", serif;
+  font-weight: 300;
+  padding: 5px 35px;
+  width: 100%;
+  border: 1px solid black;
+}
+.copyright p{
+  font-family: "Josefin Sans", serif;
+  font-weight: 300;
+}
+
+

@@ -1,0 +1,225 @@
+.profile{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
+.borderr{
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    width: 60%;
+    height: 420px;
+}
+.cprofile{
+    width: 80%;
+    display: flex;
+    justify-content: center;
+}
+.veer{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.qq a{
+
+    color: rgb(0, 0, 0);
+    padding: 8px 10px;
+    font-size: 14px;
+    font-family: "Josefin Sans", serif;
+    font-weight: 300;
+}
+.qq .active{
+    border-left: 2px solid black;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,0,0,0.1) 0%, rgba(255,255,255,1) 100%);
+}
+.mo{
+    width: 70%;
+    padding: 10px;
+    overflow-y: scroll;
+
+}
+.prlo img{
+    height: 130px;
+    width: 130px;
+    object-fit: cover;
+}
+.w-100 form{
+    width: 100%;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+}
+.logg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    color: white;
+    padding: 4px 0px;
+    gap: 10px ;
+    font-size: 14px;
+    font-family: "Josefin Sans", serif;
+    font-weight: 300;
+}
+.logg i{
+    font-size: 20px;
+}
+.row span{
+    font-family: "Josefin Sans", serif;
+    font-weight: 500;
+}
+.row p{
+    font-family: "Josefin Sans", serif;
+    font-weight: 300;
+}
+
+/* ================ update_profile ================ */
+/* Form Elements */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form p {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+/* Labels */
+form label {
+    font-family: "Josefin Sans", serif;
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+/* Input Fields */
+form input, form select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    font-family: "Josefin Sans", serif;
+    font-weight: 300;
+    border: 1px solid #ccc;
+    transition: border 0.3s ease-in-out;
+}
+
+form input:focus, form select:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0px 0px 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Submit Button */
+.submit-btn {
+    background: #000000c8;
+    color: #fff;
+    font-size: 16px;
+    padding: 12px;
+    border: none;
+    cursor: pointer;
+    font-family: "Josefin Sans", serif;
+    font-weight: 300;
+    transition: background 0.3s ease-in-out;
+}
+
+.submit-btn:hover {
+    background: #000000;
+}
+.helptext{
+    margin-top: 5px;
+    font-size: 12px;
+    color: rgba(89, 83, 83, 0.701);
+    font-family: "Josefin Sans", serif;
+    font-weight: 300;
+}
+/* Responsive Design */
+@media (max-width: 500px) {
+    .uuo {
+        padding: 20px;
+        width: 90%;
+    }
+
+    form input, form select {
+        font-size: 14px;
+    }
+}
+
+
+
+/* ============= orders ============== */
+/* .rr img{
+    height: 50px;
+    width: 50px;
+    object-fit: cover;
+} */
+
+/* Order History List */
+ul {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+
+ul li {
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* Order Date */
+ul li .d-flex.justify-content-end {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 5px;
+    font-family: "Josefin Sans", serif;
+    font-weight: 300;
+}
+
+/* Order Details */
+ul li .d-flex {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Product Image */
+.rr img {
+    width: 90px;
+    height: 110px;
+    object-fit: cover;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
+
+/* Order Info */
+.rrr {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.rrr p {
+    margin: 0;
+    font-family: "Josefin Sans", serif;
+    font-weight: 300;
+    font-size: 16px;
+}
+
+.rrr span {
+    color: #555;
+}
+
+
+.delivery-status{
+    font-size: 12px;
+    color: rgb(0, 208, 0);
+    font-weight: 400;
+}

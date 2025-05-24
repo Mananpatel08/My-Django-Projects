@@ -1,0 +1,121 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %}
+Product Detail
+{% endblock  %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/product_detail4.css' %}">
+
+
+<section class="product2">
+    <div class="container mx-0">
+
+        <div class="nav ">
+            
+            <p> 
+                <span><a href="{% url 'home' %}">Home</a></span> 
+                <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20" aria-hidden="true" class="sZkQOfF mb-1 mx-2 "><path fill-rule="evenodd" d="M8.70710678,4.99810828 L15.068,11.3651083 L15.0722115,11.3620693 L15.7793183,12.0691761 L15.776,12.0721083 L15.7782433,12.0758831 L15.0711365,12.7829899 L15.069,12.7801083 L8.70710678,19.1434929 L8,18.4363861 L14.361,12.0721083 L8,5.70521506 L8.70710678,4.99810828 Z"></path></svg>
+                <span>{{ product.name }}</span>  
+            </p>
+        </div>
+
+        <div class="downn ">
+            <div class="pp border border-0">
+                <div class="d-flex flex-column">
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                    <div class="dicription">
+                        <p>{{ product.prduct_discription }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="detail">
+                <div class="subdeatil">
+                <p>{{ product.name }}</p>
+                <span>${{ product.price }}</span>
+
+                <br>
+                <form id="cartForm" method="POST" action="{% url 'add_to_cart' product.id %}">
+                    {% csrf_token %}
+                    <label for="sizeSelect" class="form-label">Select Size</label>
+                    <select class="form-select" id="sizeSelect" name="size">
+                        <option value="S">Small</option>
+                        <option value="M">Medium</option>
+                        <option value="L">Large</option>
+                    </select>
+                
+                    <label for="quantityInput" class="form-label">Enter Quantity</label>
+                    <input type="number" class="form-control" id="quantityInput" name="quantity" value="1" min="1">
+                
+                    <button class="add my-2" type="submit">Add to Cart</button>
+                </form>
+                
+
+                    <button class="add2 my-2">Buy Now</button>
+
+
+                    <p class="mb-0">
+                        <button class="px-0 toggle-btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
+                            <span class="fs-6">PRODUCT INFO</span> 
+                        </button>
+                    </p>
+                    <div>
+                        <div>
+                            <div class="card card-body border border-0 rounded-0 ps-0 pb-0 pt-1" style="width: 100%;">
+                                I'm a product detail...
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p class="mb-0">
+                        <button class="px-0 toggle-btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample1" aria-expanded="false" aria-controls="collapseWidthExample1">
+                            <span class="fs-6">RETURN & REFUND POLICY</span>
+                        </button>
+                    </p>
+                    <div>
+                        <div>
+                            <div class="card card-body border border-0 rounded-0 ps-0 pb-0 pt-1" style="width: 100%;">
+                                I'm a Return and Refund policy...
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p class="mb-0">
+                        <button class="px-0 toggle-btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample2" aria-expanded="false" aria-controls="collapseWidthExample2">
+                            <span class="fs-6">SHIPPING POLICY</span>
+                        </button>
+                    </p>
+                    <div>
+                        <div>
+                            <div class="card card-body border border-0 rounded-0 ps-0 pb-0 pt-1" style="width: 100%;">
+                                I'm a shipping policy...
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+
+                
+                </div>
+            </div>
+        </div>
+       
+
+    </div>
+    
+</section>
+
+<script>
+
+    
+   
+</script>
+
+{% endblock  %}
+
+
+
+
+
+

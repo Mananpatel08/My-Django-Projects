@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %}
+Home
+{% endblock %}
+
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/form.css' %}">
+
+<div class="mai">
+    <div class="login">
+
+    <h2> {% if form.instance.pk %} Edit Tweet {% else %} Create Tweet {% endif %}  </h2>
+
+    <form method="post" enctype="multipart/form-data" class="custom-form" >
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="Submit" class="submit-btn" >Submit</button>
+        <a href="{% url 'tweet_list' %}" class="mam" > back </a>
+    </form>
+
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,114 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %}
+Cart | ShoppyGo
+{% endblock  %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/cart3.css' %}">
+
+<section class="cart">
+    <div class="subcart">
+
+        <div class="left">
+            <div class="no">
+                <h2 class="border-bottom mb-3 pb-2 fs-4 fw-light">My Cart</h2>
+            </div>
+            <div class="yes">
+                <ul class="d-flex flex-column border-bottom gap-3 p-0 m-0">
+                    {% for item in cart_items %}
+                    <li class="w-100">
+
+                        <div class="ppfc border-bottom pb-3 d-flex justify-content-between ">
+                            
+                            <div class="ligg d-flex">
+                                <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="border" style="width:100px; height:150px;   object-fit: cover;">
+                                    
+                                <div class="in d-flex flex-column gap-1">
+                                        <span class="p-0">{{ item.product.name }}</span>
+                                        <span class="p-0">${{ item.product.price }}</span>
+                                        <span class="p-0">Size: {{ item.get_size_display }}</span>
+                                </div>
+                            </div>
+
+                            <div class="rigg d-flex justify-content-between">
+                                <div class="addremove">
+                                        <span class="idd">
+                                            <a href="{% url 'update_cart' item.id 'increase' %}"><i class="bi bi-plus"></i></a>
+                                            {{ item.quantity }} 
+                                            <a href="{% url 'update_cart' item.id 'decrease' %}"><i class="bi bi-dash-lg"></i></a>
+                                        </span>
+                                </div>
+
+                                <div class="ttt">
+                                    <span class="fs-6">${% widthratio item.product.price 1 item.quantity %} </span>
+                                </div>
+
+                                <div class="ppsc">
+                                    <a href="{% url 'remove_from_cart' item.id %}"><i class="bi bi-trash"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </li>
+                    {% empty %}
+                    <div class="empty">    
+                        <p class="text-center mb-0 fs-5">Your cart is empty.</p>
+                        <p class="text-center fs-6 "><a href="{%url 'shopAll' %}" class="text-center text-decoration-underline">Continue Browsing</a></p>
+                    </div>
+                    {% endfor %}
+                    
+                </ul>
+            </div>
+        </div>
+        {% if cart_items %}
+        <div class="right">
+            <h2 class="border-bottom mb-3 pb-2 fs-4 fw-light">Order summary </h2>
+            
+            <div class="border-bottom">
+            <p class="d-flex justify-content-between"> <span>Subtotal</span>  <span>${{ total_price }}</span></p>
+            <p class="d-flex justify-content-between"> <span>Delivery</span>  <span>FREE</span></p>
+            <p><a class="text-decoration-underline" href="#">Gujarat, India</a></p>
+            </div>
+
+            <p class="d-flex justify-content-between mt-3 fs-5"> <span>Total</span>  <span>${{ total_price }}</span></p>
+
+            <script src="https://js.stripe.com/v3/"></script>
+            <button id="checkout-button" class="btww w-100 p-2">Checkout</button>
+
+            <script>
+                var stripe = Stripe("{{ STRIPE_PUBLIC_KEY }}");  // Ensure this is not empty
+            
+                if (!"{{ STRIPE_PUBLIC_KEY }}") {
+                    console.error("Stripe publishable key is missing!");
+                }
+            
+                document.getElementById("checkout-button").addEventListener("click", function () {
+                    fetch("{% url 'create_checkout_session' %}", {
+                        method: "POST",
+                        headers: {
+                            "X-CSRFToken": "{{ csrf_token }}",
+                        },
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.session_id) {
+                            stripe.redirectToCheckout({ sessionId: data.session_id });
+                        } else {
+                            alert("Something went wrong!");
+                        }
+                    });
+                });
+            </script>
+
+            
+            <p class="fon d-flex text-black justify-content-center align-items-center mt-3 gap-2 m-0">
+                <svg width="11" height="14" viewBox="0 0 11 14" xmlns="http://www.w3.org/2000/svg" class="QXycij mb-1" data-hook="SecureCheckoutDataHook.lock"><g fill="currentColor" fill-rule="evenodd"><path d="M0 12.79c0 .558.445 1.01.996 1.01h9.008A1 1 0 0 0 11 12.79V6.01c0-.558-.445-1.01-.996-1.01H.996A1 1 0 0 0 0 6.01v6.78Z"></path><path d="M9.5 5v-.924C9.5 2.086 7.696.5 5.5.5c-2.196 0-4 1.586-4 3.576V5h1v-.924c0-1.407 1.33-2.576 3-2.576s3 1.17 3 2.576V5h1Z" fill-rule="nonzero"></path></g></svg>
+                <span>Secure Checkout</span>
+            </p>
+        </div>
+        {% endif %}
+    </div>   
+</section>
+{% endblock  %}

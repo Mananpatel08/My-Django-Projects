@@ -1,0 +1,29 @@
+# macOS system files
+.DS_Store
+.Trash
+.Library
+.Applications
+.Desktop
+.Music
+.Movies
+.Pictures
+.Public
+.Documents
+
+# Python
+__pycache__/
+*.pyc
+.env
+venv
+
+# Node.js
+node_modules/
+package-lock.json
+
+# Editor settings
+.vscode/
+.idea/
+
+# Others
+*.log
+

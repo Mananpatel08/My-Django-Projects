@@ -1,0 +1,106 @@
+:root{
+    --hover : #926402;
+}
+/* -----------------modal-css------------------ */
+.modal-dialog {
+    display: flex;
+    align-items: center;
+    max-width: 95%;
+    height: 90vh;
+}
+.modal-body{
+    padding: 0px 40px 10px 40px;
+}
+.modal-content {
+    height: 500px;
+    width: 800px;
+}
+.photo{
+    height: 100%;
+}
+.photo img{
+  height: 410px;
+  width: 100%;
+  object-fit: cover;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+} 
+.detail{
+    display: flex;
+    flex-direction: column;
+}
+.detail p{
+    margin-bottom: 20px;
+    font-family: "Josefin Sans", serif;
+    font-size: 30px;
+    font-weight: 300;
+}
+
+.detail span{
+    font-family: "Josefin Sans", serif;
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.detail label{
+    margin-top: 20px;
+    margin-bottom: 5px;
+    font-family: "Josefin Sans", serif;
+    font-size: 15px;
+    font-weight: 300;
+}
+.detail select{
+    font-family: "Josefin Sans", serif;
+    border-radius: 0;
+    font-weight: 300;
+}
+.detail select option{
+    font-family: "Josefin Sans", serif;
+    font-weight: 300;
+}
+.detail input{
+    margin-bottom: 30px;
+    border-radius: 0;
+    width: 25%;
+    font-family: "Josefin Sans", serif;
+    font-weight: 300;
+}
+.detail button{
+    width: 100%;
+    background-color: rgb(100, 123, 110);
+    font-family: "Josefin Sans", serif;
+    font-weight: 300;
+    padding: 8px;
+    border: none;
+    color: #ffffff;
+}
+.detail button:hover{
+    background-color: rgb(46, 48, 47);
+}
+.detail a{
+    margin-top: 10px;
+    font-family: "Josefin Sans", serif;
+    font-weight: 300;
+    font-size: 12px;
+    color: rgb(100, 123, 110);
+}
+.shopAll a{
+    margin-top: 50px;
+    margin-bottom: 90px;
+  
+    font-family: "Josefin Sans", serif;
+    font-weight: 300;
+    color: #000000;
+    padding: 5px 35px;
+    background-color: rgb(100, 123, 110);
+    color: white;
+    transition: background-color 0.3s ease-in-out;
+    
+}
+.shopAll a:hover{
+    background-color: rgb(46, 48, 47);
+    color: white;
+}
+
+
+
+

@@ -1,0 +1,309 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> 
+      {% block title %}
+      ShoppyGo
+      {% endblock  %} 
+    </title>
+    <link rel="shortcut icon" href="{% static 'default/favicon.ico' %}">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/home4.css' %}">
+    <link rel="stylesheet" href="{% static 'css/layout4.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  </head>
+  <body>
+  
+    <section class="navbar d-flex flex-column justify-content-center mt-3">
+        <div class="top d-flex justify-content-between align-items-center">
+
+          <div class="d-flex flex-column">
+              <form method="GET" action="{% url 'home' %}" id="search-form">
+                {% csrf_token %}
+                <div class="ui-input-container">
+                    <input
+                        placeholder="SEARCH..."
+                        class="ui-input"
+                        type="text"
+                        name="query"  
+                        value="{{ query }}"
+                        oninput="searchProducts()"
+                        id="search-bar"
+                        onfocus="showSearchResults()" 
+                        autocomplete="off"
+                    />
+                    <div class="ui-input-underline"></div>
+                    <div class="ui-input-highlight"></div>
+                    <div class="ui-input-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <path
+                                stroke-linejoin="round"
+                                stroke-linecap="round"
+                                stroke-width="2"
+                                stroke="currentColor"
+                                d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z"
+                            ></path>
+                        </svg>
+                    </div>
+                </div>
+            </form>
+            
+            <!-- Display search results (dynamically updated via AJAX) -->
+            <div id="search-results" style="display:none;">
+              <p class="p-1">Product Display Here</p>
+            </div>
+          
+          </div>
+     
+          <div class="login d-flex align-items-center gap-3 ">
+
+            {% comment %} # --------------------------login------------------- # {% endcomment %}
+            <div class="authentication d-flex gap-2 align-items-center">
+              {% if user.is_authenticated %}
+                <a href="{% url 'profile' user.id %}">
+                  {% if user.profile_image %}
+                      <img class="rounded-circle" src="{{ user.profile_image.url }}" width="22" height="22" alt="Profile Image">
+                  {% else %}
+                      <svg data-bbox="0 0 50 50" data-type="shape" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 50 50"><g><path d="M25 48.077c-5.924 0-11.31-2.252-15.396-5.921 2.254-5.362 7.492-8.267 15.373-8.267 7.889 0 13.139 3.044 15.408 8.418-4.084 3.659-9.471 5.77-15.385 5.77m.278-35.3c4.927 0 8.611 3.812 8.611 8.878 0 5.21-3.875 9.456-8.611 9.456s-8.611-4.246-8.611-9.456c0-5.066 3.684-8.878 8.611-8.878M25 0C11.193 0 0 11.193 0 25c0 .915.056 1.816.152 2.705.032.295.091.581.133.873.085.589.173 1.176.298 1.751.073.338.169.665.256.997.135.515.273 1.027.439 1.529.114.342.243.675.37 1.01.18.476.369.945.577 1.406.149.331.308.657.472.98.225.446.463.883.714 1.313.182.312.365.619.56.922.272.423.56.832.856 1.237.207.284.41.568.629.841.325.408.671.796 1.02 1.182.22.244.432.494.662.728.405.415.833.801 1.265 1.186.173.154.329.325.507.475l.004-.011A24.886 24.886 0 0 0 25 50a24.881 24.881 0 0 0 16.069-5.861.126.126 0 0 1 .003.01c.172-.144.324-.309.49-.458.442-.392.88-.787 1.293-1.209.228-.232.437-.479.655-.72.352-.389.701-.78 1.028-1.191.218-.272.421-.556.627-.838.297-.405.587-.816.859-1.24a26.104 26.104 0 0 0 1.748-3.216c.208-.461.398-.93.579-1.406.127-.336.256-.669.369-1.012.167-.502.305-1.014.44-1.53.087-.332.183-.659.256-.996.126-.576.214-1.164.299-1.754.042-.292.101-.577.133-.872.095-.89.152-1.791.152-2.707C50 11.193 38.807 0 25 0"></path></g></svg>
+                  {% endif %}
+
+                </a>
+                {% else %}
+                <button type="submit" class="lo">
+                  <a href="{% url 'login' %}">
+                    Log In </a>
+                  </button>
+                {% endif %}
+            </div>
+          {% comment %} # --------------------------login------------------- # {% endcomment %}
+
+            <a href="{% url 'gift' %}">
+            <svg preserveAspectRatio="xMidYMid meet" data-bbox="29.5 29.5 141 141" viewBox="29.5 29.5 141 141" height="24" width="24" xmlns="http://www.w3.org/2000/svg" data-type="color" role="presentation" aria-hidden="true" aria-label="">
+              <g>
+                  <path d="M166.5 62.75h-20.301c2.716-3.493 4.351-7.867 4.351-12.625 0-11.373-9.252-20.625-20.625-20.625-11.063 0-20.468 6.465-27.195 18.697a62.424 62.424 0 0 0-2.729 5.643 62.964 62.964 0 0 0-2.729-5.643C90.543 35.965 81.139 29.5 70.075 29.5c-11.373 0-20.625 9.252-20.625 20.625 0 4.758 1.635 9.132 4.351 12.625H33.5a4 4 0 0 0-4 4V100a4 4 0 0 0 4 4h9.3v62.5a4 4 0 0 0 4 4h106.4a4 4 0 0 0 4-4V104h9.3a4 4 0 0 0 4-4V66.75a4 4 0 0 0-4-4zm-56.675-10.853c5.3-9.553 12.062-14.397 20.1-14.397 6.962 0 12.625 5.664 12.625 12.625s-5.663 12.625-12.625 12.625h-24.701c.938-2.96 2.426-6.933 4.601-10.853zM57.45 50.125c0-6.961 5.663-12.625 12.625-12.625 8.037 0 14.8 4.844 20.1 14.397 2.175 3.92 3.663 7.892 4.602 10.853H70.075c-6.962 0-12.625-5.664-12.625-12.625zM37.5 70.75H96V96H37.5V70.75zM50.8 104H96v58.5H50.8V104zm98.4 58.5H104V104h45.2v58.5zM162.5 96H104V70.75h58.5V96z" fill="#000001" data-color="1"></path>
+              </g>
+            </svg> </a>
+
+
+            <a href="{% url 'cart_view' %}" class="" type="button">
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="22" height="26.2" viewBox="0 0 164.9 196.4" preserveAspectRatio="xMinYMax meet" data-hook="svg-icon-9">
+              <text x="84" y="131" dy=".35em" text-anchor="middle" class="uxskpx M846Y_" data-hook="items-count" font-size="70">{{cart_item_count}}</text>
+              <path d="M81.9 11.5c-18.8 0-34.1 16-34.1 35.7v18.1h7.8V47.2c0-15.4 11.8-27.9 26.4-27.9 14.5 0 26.4 12.5 26.4 27.9v18.1h6.6V64h1.1V47.2c-.1-19.7-15.4-35.7-34.2-35.7z"></path>
+              <path d="M156.9 70.5v118H8v-118h148.9m8-8H0v134h164.9v-134z"></path>
+            </svg></a>
+          </div>
+
+        </div>
+
+        <div class="mid text-center">
+            <p><a class="fs-4 fw-semibold text-black" href="{% url 'home' %}">ShoppyGo</a></p>
+            <p class="mobilelist d-flex justify-content-center align-items-start gap-3">
+              <a href="{% url 'gift' %}">
+                <svg preserveAspectRatio="xMidYMid meet" data-bbox="29.5 29.5 141 141" viewBox="29.5 29.5 141 141" height="24" width="24" xmlns="http://www.w3.org/2000/svg" data-type="color" role="presentation" aria-hidden="true" aria-label="">
+                  <g>
+                      <path d="M166.5 62.75h-20.301c2.716-3.493 4.351-7.867 4.351-12.625 0-11.373-9.252-20.625-20.625-20.625-11.063 0-20.468 6.465-27.195 18.697a62.424 62.424 0 0 0-2.729 5.643 62.964 62.964 0 0 0-2.729-5.643C90.543 35.965 81.139 29.5 70.075 29.5c-11.373 0-20.625 9.252-20.625 20.625 0 4.758 1.635 9.132 4.351 12.625H33.5a4 4 0 0 0-4 4V100a4 4 0 0 0 4 4h9.3v62.5a4 4 0 0 0 4 4h106.4a4 4 0 0 0 4-4V104h9.3a4 4 0 0 0 4-4V66.75a4 4 0 0 0-4-4zm-56.675-10.853c5.3-9.553 12.062-14.397 20.1-14.397 6.962 0 12.625 5.664 12.625 12.625s-5.663 12.625-12.625 12.625h-24.701c.938-2.96 2.426-6.933 4.601-10.853zM57.45 50.125c0-6.961 5.663-12.625 12.625-12.625 8.037 0 14.8 4.844 20.1 14.397 2.175 3.92 3.663 7.892 4.602 10.853H70.075c-6.962 0-12.625-5.664-12.625-12.625zM37.5 70.75H96V96H37.5V70.75zM50.8 104H96v58.5H50.8V104zm98.4 58.5H104V104h45.2v58.5zM162.5 96H104V70.75h58.5V96z" fill="#000001" data-color="1"></path>
+                  </g>
+                </svg> </a>
+    
+    
+                <a href="{% url 'cart_view' %}" class="" type="button">
+                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="22" height="26.2" viewBox="0 0 164.9 196.4" preserveAspectRatio="xMinYMax meet" data-hook="svg-icon-9">
+                  <text x="84" y="131" dy=".35em" text-anchor="middle" class="uxskpx M846Y_" data-hook="items-count" font-size="70">{{cart_item_count}}</text>
+                  <path d="M81.9 11.5c-18.8 0-34.1 16-34.1 35.7v18.1h7.8V47.2c0-15.4 11.8-27.9 26.4-27.9 14.5 0 26.4 12.5 26.4 27.9v18.1h6.6V64h1.1V47.2c-.1-19.7-15.4-35.7-34.2-35.7z"></path>
+                  <path d="M156.9 70.5v118H8v-118h148.9m8-8H0v134h164.9v-134z"></path>
+                </svg></a>
+
+                <i class="bi bi-list fs-1 d-flex align-items-start " data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" ></i>
+            </p>
+        </div>
+
+        <div class="low">
+
+          <nav class="navbar navbar-expand-lg ">
+                <div class="navbar-nav gap-5">
+                  <a class="nav-link" aria-current="page" href="{% url 'home' %}">HOME</a>
+                  <a class="nav-link" href="{% url 'category' %}">CATEGORY</a>
+                  <a class="nav-link" href="{% url 'about' %}">ABOUT</a>
+                  <a class="nav-link" href="{% url 'contact' %}">CONTACT</a>
+                </div>
+          </nav>
+        </div>
+    </section>
+
+    <div class="full">
+        {% block content %}
+        {% endblock  %}
+    </div>
+
+    <section class="footer">
+
+    <div class="subFooter">
+
+      <div class="up d-flex ">
+        <h1>ShoppyGo</h1> 
+      </div>
+        
+      <div class="down">
+          <div class="lefty d-flex flex-column">
+            <a href="{% url 'shopAll' %}">Shop</a>
+            <a href="{% url 'gift' %}">Gift Card</a>
+            <a href="{% url 'about' %}">About</a>
+            <a href="{% url 'contact' %}">Contact</a>
+          </div>
+            
+          <div class="mid d-flex flex-column">
+              <a href="#">FAQ</a>
+              <a href="#">Shipping & Returns</a>
+              <a href="#">Store Policy</a>
+              <a href="#">Payment</a>
+          </div>
+            
+          <div class="right d-flex flex-column">
+                <a href="#">patelmanan0755@gmail.com</a>
+                <p>
+                  701 Businee Empire  <br>
+                  India Gujarat, IN 390019  <br>
+                  Tel: 849-092-2820   
+                </p>
+          </div>
+
+          <div class="rig">
+          <p>Sign up. Stay stylish</p>
+          <label for="inputEmail4" >Email</label><br>
+          <input type="email" class="w-100" id="inputEmail4">
+          <div class="rr"><input type="checkbox"><span>Yes, subscribe me to your newsletter.</span></div>
+          <button>Subscribe Now</button>
+          </div>
+    </div>
+    </section>
+
+    {% comment %} <!-- Main-Modal --> {% endcomment %}
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="d-flex justify-content-center align-items-center h-100">
+          <div class="modal-dialog m-0">
+              <div class="modal-content rounded-0">
+                  <div class="modal-header border border-0">
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body rounded-0 d-flex align-items-center gap-4">
+                      <div class="photo w-50 px-4">
+                          <img id="modalImage" src="" alt="Product Image">
+                      </div>
+                      <div class="detail w-50 px-2 pe-4">
+                          <p id="modalTitle"></p>
+                          <span id="modalPrice"></span>
+
+                          <form id="cartForm" method="POST">
+                              {% csrf_token %}
+                              
+                              <label for="sizeSelect" class="form-label">Select Size</label>
+                              <select class="form-select" id="sizeSelect" name="size">
+                                  <option value="S">Small</option>
+                                  <option value="M">Medium</option>
+                                  <option value="L">Large</option>
+                              </select>
+                          
+                              <label for="quantityInput" class="form-label">Enter Quantity</label>
+                              <input type="number" class="form-control" id="quantityInput" name="quantity" value="1" min="1">
+
+                              <div class="bbb">
+                                <button type="submit" >Add to Cart</button>
+                              </div>
+                          </form>
+                          <a id="viewProductLink" href="#" class="text-decoration-underline">View More Details</a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+
+    {% comment %} <! ---- OFF CANVAS --- !>  {% endcomment %}
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+      <div class="offcanvas-header">
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <div class="authentication d-flex gap-2 align-items-center">
+          {% if user.is_authenticated %}
+            <a href="{% url 'profile' user.id %}">
+              {% if user.profile_image %}
+                  <img class="rounded-circle" src="{{ user.profile_image.url }}" width="22" height="22" alt="Profile Image">
+              {% else %}
+                  <svg data-bbox="0 0 50 50" data-type="shape" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 50 50"><g><path d="M25 48.077c-5.924 0-11.31-2.252-15.396-5.921 2.254-5.362 7.492-8.267 15.373-8.267 7.889 0 13.139 3.044 15.408 8.418-4.084 3.659-9.471 5.77-15.385 5.77m.278-35.3c4.927 0 8.611 3.812 8.611 8.878 0 5.21-3.875 9.456-8.611 9.456s-8.611-4.246-8.611-9.456c0-5.066 3.684-8.878 8.611-8.878M25 0C11.193 0 0 11.193 0 25c0 .915.056 1.816.152 2.705.032.295.091.581.133.873.085.589.173 1.176.298 1.751.073.338.169.665.256.997.135.515.273 1.027.439 1.529.114.342.243.675.37 1.01.18.476.369.945.577 1.406.149.331.308.657.472.98.225.446.463.883.714 1.313.182.312.365.619.56.922.272.423.56.832.856 1.237.207.284.41.568.629.841.325.408.671.796 1.02 1.182.22.244.432.494.662.728.405.415.833.801 1.265 1.186.173.154.329.325.507.475l.004-.011A24.886 24.886 0 0 0 25 50a24.881 24.881 0 0 0 16.069-5.861.126.126 0 0 1 .003.01c.172-.144.324-.309.49-.458.442-.392.88-.787 1.293-1.209.228-.232.437-.479.655-.72.352-.389.701-.78 1.028-1.191.218-.272.421-.556.627-.838.297-.405.587-.816.859-1.24a26.104 26.104 0 0 0 1.748-3.216c.208-.461.398-.93.579-1.406.127-.336.256-.669.369-1.012.167-.502.305-1.014.44-1.53.087-.332.183-.659.256-.996.126-.576.214-1.164.299-1.754.042-.292.101-.577.133-.872.095-.89.152-1.791.152-2.707C50 11.193 38.807 0 25 0"></path></g></svg>
+              {% endif %}
+
+            </a>
+            {% else %}
+            <button type="submit" class="lo">
+              <a href="{% url 'login' %}">
+                Log In </a>
+              </button>
+            {% endif %}
+        </div>
+
+        <div class="low2 mt-3">
+
+          <nav class="navbar navbar-expand-lg p-0">
+                <div class="navbar-nav gap-4">
+                  <a class="nav-link p-0 m-0" aria-current="page" href="{% url 'home' %}">HOME</a>
+                  <a class="nav-link p-0 m-0" href="{% url 'category' %}">CATEGORY</a>
+                  <a class="nav-link p-0 m-0" href="{% url 'about' %}">ABOUT</a>
+                  <a class="nav-link p-0 m-0" href="{% url 'contact' %}">CONTACT</a>
+                </div>
+          </nav>
+        </div>
+        
+      </div>
+    </div>
+    <div class="copyright d-flex justify-content-center p-2 mt-2">
+    <p>Copyright © 2025 ShoppyGo. All rights reserved.</p>
+    </div>
+
+    {% comment %} <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> {% endcomment %}  
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    <script src="../static/js/layout.js"> </script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+    AOS.init();
+    });
+
+    
+    </script>
+    {% comment %}------ JS for modal rendering and id -------{% endcomment %}
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll(".open-modal-btn").forEach(button => {
+                button.addEventListener("click", function () {
+                    // Get product details from data attributes
+                    let name = this.getAttribute("data-name");
+                    let image = this.getAttribute("data-image");
+                    let price = this.getAttribute("data-price");
+                    let productId = this.getAttribute("data-product-id");  // ✅ Get product ID
+        
+                    document.getElementById("modalTitle").textContent = name;
+                    document.getElementById("modalImage").src = image;
+                    document.getElementById("modalPrice").textContent = `$${price}`;
+        
+                    let form = document.getElementById("cartForm");  
+                    form.action = `/add-to-cart/${productId}/`;
+
+                    let viewProductLink = document.getElementById("viewProductLink");
+                    viewProductLink.href = `/product/${productId}/`;
+                });
+            });
+        });
+    </script>
+  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  </body>
+</html>

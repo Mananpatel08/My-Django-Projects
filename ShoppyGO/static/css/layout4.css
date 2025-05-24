@@ -1,0 +1,342 @@
+/* ===== none for mobile ==== */
+.mobilelist{
+    display: none ;
+}
+
+
+/* ===================== SEARCH BUTTTON CSS ===================== */
+#search-results {
+    position: absolute;
+    top: 50px; /* Adjust this based on your search bar position */
+    left: 15%;
+    width: 300px;
+    background: white;
+    z-index: 1000; /* Ensures it's above other elements */
+    max-height: 300px; /* Set a limit for scrolling */
+    overflow-y: auto;
+    border-bottom: 4px solid black;
+    display: none; /* Initially hidden */
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+#search-bar:focus + #search-results {
+    display: block; /* Show results when search bar is focused */
+}
+#search-results h3{
+    font-family: "Josefin Sans", serif;
+    font-size: 15px;
+    font-weight: 300;
+    margin: 10px 20px 5px 20px;
+}
+.ok{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#search-results p{
+    margin: 0;
+    font-family: "Josefin Sans", serif;
+    font-size: 15px;
+    font-weight: 300;
+    margin: 10px 20px 5px 20px;
+}
+#search-results ul {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+}
+#search-results ul li{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 5px 20px;
+}
+#search-results ul li:hover{
+    background-color: rgba(235, 228, 228, 0.923);
+}
+#search-results ul li a{
+    display: flex;
+    text-decoration: none;
+    align-items: center;
+    gap: 10px;
+    color: black;
+}
+#search-results ul li a span{
+    font-family: "Josefin Sans", serif;
+    font-weight: 300;
+}
+.ui-input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%; /* Initial width */
+    transition: width 0.3s ease-in-out;
+}
+
+.ui-input-container:focus-within {
+    width: 300px; /* Expanded width on focus */
+}
+
+/* ----------------------cart-css--------------- */
+.offcanvas{
+    padding: 0px 20px 15px 20px;
+    font-family: "Josefin Sans", serif;
+    font-weight: 300;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+.pppp{
+    border-bottom: .80px solid black;
+    padding-bottom: 15px;
+}
+.ppf{
+    display: flex;
+    gap: 15px;
+    width: 90%;
+}
+.pps{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-right: 15px;
+}
+
+.offcanvas-header{
+    border-bottom: 1px solid black;
+}
+.offcanvas-body ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.idd{
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid black;
+    padding: 5px;
+    width: 80px;
+    height: 33px;
+}
+
+
+.viewCart button{
+    width: 100%;
+    background-color: #575757;
+    font-family: "Josefin Sans", serif;
+    font-weight: 300;
+    padding: 10px;
+    color: white;
+    border: none;
+}
+.viewCart button:hover{
+    background-color: #575757d8;
+}
+.check button{
+    margin-top: 10px;
+    width: 100%;
+    background-color: transparent;
+    font-family: "Josefin Sans", serif;
+    font-weight: 300;
+    padding: 10px;
+    border: 1px solid black;
+    color: rgb(0, 0, 0);
+}
+.check button:hover{
+    color: #926402;;
+}
+.fon{
+    font-family: proxima;
+}
+
+
+
+
+/* ---------modal-css-main------------- */
+
+/* -------modal----------- */
+/* -----------------modal-css------------------ */
+.modal-dialog {
+    display: flex;
+    align-items: center;
+    max-width: 95%;
+    height: 90vh;
+}
+.modal-body{
+    padding: 0px 40px 10px 40px;
+}
+.modal-content {
+    height: 500px;
+    width: 800px;
+}
+.photo{
+    height: 100%;
+}
+.photo img{
+  height: 410px;
+  width: 100%;
+  object-fit: cover;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+} 
+.detail{
+    display: flex;
+    flex-direction: column;
+}
+.detail p{
+    margin-bottom: 20px;
+    font-family: "Josefin Sans", serif;
+    font-size: 30px;
+    font-weight: 300;
+}
+
+.detail span{
+    font-family: "Josefin Sans", serif;
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.detail label{
+    margin-top: 20px;
+    margin-bottom: 5px;
+    font-family: "Josefin Sans", serif;
+    font-size: 15px;
+    font-weight: 300;
+}
+.detail select{
+    font-family: "Josefin Sans", serif;
+    border-radius: 0;
+    font-weight: 300;
+}
+.detail select option{
+    font-family: "Josefin Sans", serif;
+    font-weight: 300;
+}
+.detail input{
+    margin-bottom: 30px;
+    border-radius: 0;
+    width: 25%;
+    font-family: "Josefin Sans", serif;
+    font-weight: 300;
+}
+.detail .bbb button{
+    width: 100%;
+    background-color: rgb(100, 123, 110);
+    font-family: "Josefin Sans", serif;
+    font-weight: 300;
+    padding: 8px;
+    border: none;
+    color: #ffffff;
+}
+.detail .bbb button:hover{
+    background-color: rgb(46, 48, 47);
+}
+.detail a{
+    margin-top: 10px;
+    font-family: "Josefin Sans", serif;
+    font-weight: 300;
+    font-size: 12px;
+    color: rgb(100, 123, 110);
+}
+
+
+/* ========================= MEDIA QUERY FOR LAYOUT =================== */
+@media only screen and (min-width: 1000px) {
+    .mobilelist{
+        display: none !important;
+    }
+}
+@media only screen and (max-width: 650px) {
+    .navbar{
+        padding: 0px 50px;
+    }
+    .login{
+        display: none !important;
+    }
+    .top{
+        width: 100% !important;
+    }
+    .top .flex-column{
+        width: 100%;
+    }
+    .mid{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+    }
+    .low{
+        display: none !important;
+    }
+    .carousel-item {
+        height: fit-content !important;
+    }
+    .items{
+        display: flex;
+        flex-direction: column !important;
+    }
+    .first button, .second button, .third button {
+        width: 85% !important;
+        background-color: transparent;
+        font-family: "Josefin Sans", serif;
+        font-weight: 300;
+        padding: 5px;
+        border: 1px solid black;
+        color: #8a8686;
+    }
+    .down {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: #e7eeea;
+    }
+    .down .mid,.down .right,.down .rig{
+        display: none !important;
+    }
+    .copyright p{
+        font-size: 12px;
+    }
+
+
+    .category{
+        width: 100%;
+    }
+    .category .select{
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+    }
+    .mens, .womens, .accessories, .skincare, .luxe {
+        position: relative;
+        height: 120px !important;
+        width: 100% !important; 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        transition: transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+    .mens p, .womens p, .accessories p, .skincare p, .luxe p {
+        writing-mode: horizontal-tb !important;
+        text-orientation: sideways;
+        font-size: 20px;
+        font-family: proxima;
+        letter-spacing: 5px;
+    }
+
+    .iin p{
+        width: 100% !important;
+    }
+    .form{
+        width: 100% !important;
+        padding: 50px;
+    }
+    .contact{
+        width: 100%;
+    }
+}

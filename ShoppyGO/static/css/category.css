@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap');
+/* font-family: "DM Serif Display", serif; */
+@import url('https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap');
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    width: 70%;
+    margin: 50px auto;
+}
+.divider span{
+    font-family: "Josefin Sans", serif;
+}
+.divider::before,
+.divider::after {
+    content: "";
+    flex: 1;
+    border-bottom: 1px solid #000000;
+}
+.divider span {
+    padding: 0 10px;
+    font-weight: bold;
+    color: #555;
+}
+.category{
+    margin-bottom: 100px;
+}
+.mens img,
+.womens img,
+.accessories img,
+.skincare img,
+.luxe img
+{
+    height: 500px;
+    width: 170px;
+    object-fit: cover;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    filter: brightness(40%); /* 50% brightness makes it darker */
+}
+.mens a,
+.womens a,
+.accessories a,
+.skincare a,
+.luxe a{
+    text-decoration: none;
+}
+.mens,
+.womens,
+.accessories,
+.skincare,
+.luxe {
+    position: relative;
+    height: 500px;
+    width: 170px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+.mens:hover,
+.womens:hover,
+.skincare:hover,
+.accessories:hover,
+.luxe:hover{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.mens p ,
+.womens p ,
+.accessories p ,
+.skincare p ,
+.luxe p {
+    writing-mode: vertical-rl; /* Rotates text vertically (right to left) */
+    text-orientation: upright; /* Keeps letters upright */
+    font-size: 20px;
+    font-family: proxima;
+    letter-spacing: 5px; 
+}
+.mens::before{
+    background-image: url("../default/category_img/men.jpg");
+}
+.womens::before{
+    background-image: url("../default/category_img/women2.jpg");
+}
+.accessories::before{
+    background-image: url("../default/category_img/accs.jpg");
+}
+.skincare::before{
+    background-image: url("../default/category_img/bath.jpg");
+}
+.luxe::before{
+    background-image: url("../default/category_img/premium.jpg");
+}
+.mens::before,
+.womens::before,
+.accessories::before,
+.skincare::before,
+.luxe::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    filter: brightness(40%); 
+    z-index: -1;
+    opacity: 0.9;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.mens:hover::before,
+.womens:hover::before,
+.skincare:hover::before,
+.accessories:hover::before,
+.luxe:hover::before {
+    opacity: 1;
+}
+
+.mens button,
+.womens button ,
+.accessories button ,
+.skincare button ,
+.luxe button {
+    height: 500px;
+    width: 170px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    border: none;
+    color: rgb(149, 142, 142); 
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+.mens :hover,
+.womens :hover,
+.skincare :hover,
+.accessories :hover,
+.luxe :hover{
+    color: #F8F8FF;
+}

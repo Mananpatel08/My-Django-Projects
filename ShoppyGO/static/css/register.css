@@ -1,0 +1,232 @@
+@import url('https://fonts.googleapis.com/css2?family=Nova+Mono&display=swap');
+/* font-family: "Nova Mono", serif; */
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+@font-face {
+    font-family: proxima;
+    src: url("../fonts/font3.otf") format("opentype");
+}
+body{
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-color: aliceblue;
+
+}
+.custom-form :nth-child(6){
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 10px;
+    padding-bottom: 10px;
+    border-bottom: 0.5px solid gainsboro;
+}
+.custom-form :nth-child(6) input{
+    width: 15px;
+}
+
+.mai{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.mai h1{
+    margin: 1rem 0;
+    font-size: 50px;
+    font-family: "Nova Mono", serif;
+}
+.mai h3{
+    font-family: "Josefin Sans", serif;
+    font-weight: 300;
+    font-size: 20px;
+    margin-top: 1rem;
+
+}
+.mai .login{
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    padding: 1.5rem;
+    border-radius: 0.2rem;
+}
+.login{
+    width: 500px;
+    margin-top: 10px;
+    background-color: white;
+}
+.login ul{
+    padding: 0px;
+}
+.login ul li{
+    font-family: "Josefin Sans", serif;
+    font-weight: 300;
+    font-size: 13px;
+    color: rgb(248, 64, 64);
+    list-style: none;
+}
+.custom-form p label{
+    color: #8a8686;
+    font-family: "Josefin Sans", serif;
+    font-weight: 300;
+    width: 100%;
+}
+.custom-form p span{
+    font-size: 13px;
+}
+.custom-form p input{
+    font-family: "Josefin Sans", serif;
+    border: 0.5px solid #8a8686;
+    border-radius: 2px;
+    font-weight: 300;
+    padding: 5px;
+    outline: none;
+    width: 100%;
+}
+.btnn{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+.custom-form button{
+    font-family: "Josefin Sans", serif;
+    font-weight: 300;
+    font-size: 14px;
+    background-color: rgba(22, 21, 21, 0.937);
+    border: none;
+    color: white;
+    padding: 8px 25px;
+    border-radius: 2px;
+    transition: background-color 0.3s ease-in-out, box-shadow 0.5s ease-in-out;
+}
+.custom-form button:hover{
+    background-color: #000000; 
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.custom-form button > svg {
+    transition: transform 0.3s ease-in-out;
+}
+  
+.custom-form button:hover svg {
+    transform: translateX(5px);
+}
+  
+.custom-form button:active {
+    transform: scale(0.95);
+}
+.login p{
+    font-family: "Josefin Sans", serif;
+    font-size: 15px;
+    font-weight: 300;
+    color: #8a8686;
+}
+.login p a{
+    font-weight: 400;
+}
+
+
+
+
+
+
+/* -----------------checkbox--------------------- */
+
+/* checkbox settings 👇 */
+#id_agree_terms {
+    --primary-color: #1677ff;
+    --secondary-color: #fff;
+    --primary-hover-color: #4096ff;
+    /* checkbox */
+    --checkbox-diameter: 20px;
+    --checkbox-border-radius: 5px;
+    --checkbox-border-color: #d9d9d9;
+    --checkbox-border-width: 1px;
+    --checkbox-border-style: solid;
+    /* checkmark */
+    --checkmark-size: 1.2;
+  }
+  
+  #id_agree_terms, 
+  #id_agree_terms *, 
+  #id_agree_terms *::before, 
+  #id_agree_terms *::after {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  
+  #id_agree_terms {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: var(--checkbox-diameter);
+    height: var(--checkbox-diameter);
+    border-radius: var(--checkbox-border-radius);
+    background: var(--secondary-color);
+    border: var(--checkbox-border-width) var(--checkbox-border-style) var(--checkbox-border-color);
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    cursor: pointer;
+    position: relative;
+  }
+  
+  #id_agree_terms::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    -webkit-box-shadow: 0 0 0 calc(var(--checkbox-diameter) / 2.5) var(--primary-color);
+    box-shadow: 0 0 0 calc(var(--checkbox-diameter) / 2.5) var(--primary-color);
+    border-radius: inherit;
+    opacity: 0;
+    -webkit-transition: all 0.5s cubic-bezier(0.12, 0.4, 0.29, 1.46);
+    -o-transition: all 0.5s cubic-bezier(0.12, 0.4, 0.29, 1.46);
+    transition: all 0.5s cubic-bezier(0.12, 0.4, 0.29, 1.46);
+  }
+  
+  #id_agree_terms::before {
+    top: 40%;
+    left: 50%;
+    content: "";
+    position: absolute;
+    width: 4px;
+    height: 7px;
+    border-right: 2px solid var(--secondary-color);
+    border-bottom: 2px solid var(--secondary-color);
+    -webkit-transform: translate(-50%, -50%) rotate(45deg) scale(0);
+    -ms-transform: translate(-50%, -50%) rotate(45deg) scale(0);
+    transform: translate(-50%, -50%) rotate(45deg) scale(0);
+    opacity: 0;
+    -webkit-transition: all 0.1s cubic-bezier(0.71, -0.46, 0.88, 0.6),opacity 0.1s;
+    -o-transition: all 0.1s cubic-bezier(0.71, -0.46, 0.88, 0.6),opacity 0.1s;
+    transition: all 0.1s cubic-bezier(0.71, -0.46, 0.88, 0.6),opacity 0.1s;
+  }
+  
+  /* actions */
+  
+  #id_agree_terms:hover {
+    border-color: var(--primary-color);
+  }
+  
+  #id_agree_terms:checked {
+    background: var(--primary-color);
+    border-color: transparent;
+  }
+  
+  #id_agree_terms:checked::before {
+    opacity: 1;
+    -webkit-transform: translate(-50%, -50%) rotate(45deg) scale(var(--checkmark-size));
+    -ms-transform: translate(-50%, -50%) rotate(45deg) scale(var(--checkmark-size));
+    transform: translate(-50%, -50%) rotate(45deg) scale(var(--checkmark-size));
+    -webkit-transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
+    -o-transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
+    transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
+  }
+  
+  #id_agree_terms:active:not(:checked)::after {
+    -webkit-transition: none;
+    -o-transition: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    transition: none;
+    opacity: 1;
+  }

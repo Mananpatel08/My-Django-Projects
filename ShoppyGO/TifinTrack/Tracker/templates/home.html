@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADANI HOMES</title>
+    <style>
+        /* Google Font */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        /* Reset & Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0d1b2a, #1b263b);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            backdrop-filter: blur(5px);
+        }
+        section {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            margin-top: 25px;
+        }
+        /* Glassmorphism Card */
+        .container {
+            background: rgba(255, 255, 255, 0.08); /* Soft transparency */
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            width: 400px;
+            box-shadow: 0px 4px 15px rgba(0, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: fadeIn 1s ease-in-out;
+            color: white;
+        }
+        .nav{
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            padding:10px;
+            border-radius:5px;
+            margin-bottom:10px;
+            background-color: black; 
+
+        }
+        .nav a{
+            color:white;
+            text-decoration: none;
+            font-size:14px;
+        }
+
+        h1 {
+            text-align: center;
+            font-weight: 600;
+            color: #00d9ff; /* Neon Cyan */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px;
+        }
+
+        /* Form Fields */
+        .mb-3 {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-weight: 600;
+            color: #00d9ff;
+            margin-bottom: 5px;
+        }
+
+        input, select, textarea {
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.15); /* Dark input background */
+            color: white;
+            outline: none;
+            transition: 0.3s;
+            font-size: 16px;
+            resize: none;
+        }
+
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        input:focus, select:focus, textarea:focus {
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0px 0px 10px rgba(0, 255, 255, 0.5);
+            border: 1px solid #00d9ff;
+        }
+
+        /* Submit Button */
+        .btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 16px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #00c9ff, #3a86ff);
+            color: white;
+            box-shadow: 0px 4px 10px rgba(0, 221, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #3a86ff, #0077ff);
+            transform: scale(1.05);
+            box-shadow: 0px 0px 15px rgba(0, 221, 255, 0.5);
+        }
+
+        /* Fade-in Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <h1>Welcome!</h1>
+        
+        <div class="container">
+            <div class="nav">
+                <a href="{% url 'home' %}">Home</a>
+                <a href="{% url 'track' %}">Tiffin History</a>
+                <a href="{% url 'wallets' %}">Wallet History</a>
+            </div>
+            <form method="POST">
+                {% csrf_token %}
+
+                <div class="mb-3">
+                    <label>Date:</label>
+                    {{ form.date }}
+                </div>
+            
+                <div class="mb-3">
+                    <label>Tiffin Price:</label>
+                    {{ form.tiffin_price }}
+                </div>
+            
+                <div class="mb-3">
+                    <label>Total Tiffins:</label>
+                    {{ form.total_tiffins }}
+                </div>
+            
+                <div class="mb-3">
+                    <label>Who Eat:</label>
+                    {{ form.eat_by }}
+                </div>
+            
+                <div class="mb-3">
+                    <label>Notes:</label>
+                    {{ form.notes }}
+                </div>
+            
+                <button type="submit" class="btn btn-primary">Save Entry</button>
+            </form>
+        </div>
+    </section>
+</body>
+</html>

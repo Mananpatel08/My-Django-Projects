@@ -1,0 +1,260 @@
+.mens{
+    width: 100%;
+    display: flex;
+}
+.container{
+    display: flex;
+    width: 90%;
+    gap: 30px;
+    margin-bottom: 100px;
+}
+.filterBar{
+    width: 15%;
+    /* border: 1px solid black; */
+}
+.nav{
+    display: flex;
+    width: 100%;
+}
+.nav p{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.nav span{
+    color: black;
+    font-family: "Josefin Sans", serif;
+    font-weight: 300;
+    font-size: 12px;
+}
+.nav p span a{
+    text-decoration: none;
+    color: black;
+    font-family: "Josefin Sans", serif;
+    font-weight: 300;
+    font-size: 12px;
+    transition: color 0.2s ease-in-out;
+}
+.nav p span a:hover{
+    color: #926402;
+}
+.side{
+    width: 85%;
+}
+.side p{
+    font-size: 12px;
+    font-family: "Josefin Sans", serif;
+    font-weight: 300;
+}
+.side .heading p{
+    margin: 20px 0px;
+    font-size: 25px;
+    font-family: "Josefin Sans", serif;
+    font-weight: 400;
+}
+.products{
+    display: grid;
+    place-items: center; 
+    grid-template-columns: repeat(3, 1fr);  
+    column-gap: 20px;
+    row-gap: 50px;
+    grid-auto-rows: 525px;  
+    width: 100%;
+    /* border: 1px solid black; */
+}
+.product{
+    height: 100%;
+    width: 100%;
+}
+.images{
+    width: 100%;
+    height: 80%;
+}
+.info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 20%;
+    width: 100%;
+}
+
+.product img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover; 
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+
+.info p{
+    margin: 0;
+    padding: 5px 0px;
+    font-family: "Josefin Sans", serif;
+    font-weight: 300;
+    color: #8a8686;
+}
+.info span{
+    font-family: "Josefin Sans", serif;
+    padding-bottom: 5px;
+    font-weight: 300;
+    color: #8a8686;
+}
+.info button{
+    width: 100%;
+    background-color: transparent;
+    font-family: "Josefin Sans", serif;
+    font-weight: 300;
+    padding: 5px;
+    border: 1px solid black;
+    color: #8a8686;
+}
+.info button:hover{
+    color: #928902;
+}
+
+/* -----------------filter-------------------- */
+
+.filterBar{
+    font-family: "Josefin Sans", serif;
+}
+.fi{
+    margin-bottom: 40px;
+}
+.fi p a{
+    text-decoration: none;
+    color: black;
+    font-weight: 300;
+    font-size: 14px;
+}
+.si button{
+    border: none;
+    background-color: transparent;
+    font-weight: 300;
+    font-size: 14px;
+}
+li.nav-item.dropdown{
+    display: flex;
+    align-items: flex-start;
+    padding: 0px 10px;
+    list-style: none;
+    font-family: "Josefin Sans", serif;
+    font-weight: 300;
+    margin-bottom: 10px;
+    font-size: 13px;
+}
+a.nav-link.dropdown-toggle{
+    gap: 20px;
+}
+a.nav-link.dropdown-toggle::after{
+    display: none;
+}
+.dropdown-menu li a{
+    font-family: "Josefin Sans", serif;
+    font-weight: 300;
+    font-size: 13px;
+}
+
+
+
+/* -------modal----------- */
+/* -----------------modal-css------------------ */
+.modal-dialog {
+    display: flex;
+    align-items: center;
+    max-width: 95%;
+    height: 90vh;
+}
+.modal-body{
+    padding: 0px 40px 10px 40px;
+}
+.modal-content {
+    height: 500px;
+    width: 800px;
+}
+.photo{
+    height: 100%;
+}
+.photo img{
+  height: 410px;
+  width: 100%;
+  object-fit: cover;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+} 
+.detail{
+    display: flex;
+    flex-direction: column;
+}
+.detail p{
+    margin-bottom: 20px;
+    font-family: "Josefin Sans", serif;
+    font-size: 30px;
+    font-weight: 300;
+}
+
+.detail span{
+    font-family: "Josefin Sans", serif;
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.detail label{
+    margin-top: 20px;
+    margin-bottom: 5px;
+    font-family: "Josefin Sans", serif;
+    font-size: 15px;
+    font-weight: 300;
+}
+.detail select{
+    font-family: "Josefin Sans", serif;
+    border-radius: 0;
+    font-weight: 300;
+}
+.detail select option{
+    font-family: "Josefin Sans", serif;
+    font-weight: 300;
+}
+.detail input{
+    margin-bottom: 30px;
+    border-radius: 0;
+    width: 25%;
+    font-family: "Josefin Sans", serif;
+    font-weight: 300;
+}
+.detail button{
+    width: 100%;
+    background-color: rgb(100, 123, 110);
+    font-family: "Josefin Sans", serif;
+    font-weight: 300;
+    padding: 8px;
+    border: none;
+    color: #ffffff;
+}
+.detail button:hover{
+    background-color: rgb(46, 48, 47);
+}
+.detail a{
+    margin-top: 10px;
+    font-family: "Josefin Sans", serif;
+    font-weight: 300;
+    font-size: 12px;
+    color: rgb(100, 123, 110);
+}
+.shopAll a{
+    margin-top: 50px;
+    margin-bottom: 90px;
+  
+    font-family: "Josefin Sans", serif;
+    font-weight: 300;
+    color: #000000;
+    padding: 5px 35px;
+    background-color: rgb(100, 123, 110);
+    color: white;
+    transition: background-color 0.3s ease-in-out;
+    
+}
+.shopAll a:hover{
+    background-color: rgb(46, 48, 47);
+    color: white;
+}
+
+

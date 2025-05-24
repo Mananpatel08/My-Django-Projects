@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %}
+Payment Success
+{% endblock  %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/payment_cancel.css' %}">
+
+<section class="fail">
+    <div class="mmain">
+        <div class="up2 text-success ">
+            <i class="bi bi-check-circle-fill"></i>
+        </div>
+        <div class="down2 text-success">
+            <h1>Payment Successfully Done</h1>
+            <p>"Thank you for your purchase on ShoppyGo! Your order has been successfully placed.</p>
+            <a class="bbb" href="{% url 'home'%}">Go to Home</a>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+{% endblock  %}

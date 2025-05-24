@@ -1,0 +1,72 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block title %}
+User Profile | ShoppyGo
+{% endblock  %}
+
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/user_profile.css' %}">
+
+<div class="divider">
+    <span class="fw-light">ORDER HISTORY</span>
+</div>
+
+<section class="profile">
+
+    <div class="cprofile">
+        <div class="borderr d-flex p-4  gap-3">
+            <div class="veer">
+                <div class="qq d-flex flex-column gap-3">
+                    <a href="{%url 'profile' user.id%}" >Profile</a>
+                    <a class="active" href="{%url 'order_history_view' %}">Order History</a>
+                    <a href="{%url 'update_profile' user.id  %}">Update Profile</a>
+                </div>
+        
+                <div class="w-100 d-flex justify-content-end">
+        
+                    <form method="post"" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button class="logg" type="submit">Logout
+                        <i class="bi bi-box-arrow-right"></i>
+                    </button>
+                    </form>
+                    
+                </div>
+            </div>
+
+            <div class="mo d-flex flex-column align-items-center justify-content-start gap-4">
+                
+            {% if orders %}
+                <ul>
+                {% for order in orders %}
+                    <li>
+                        <div class="d-flex justify-content-end">{{ order.ordered_at }}</div>
+                        <div class="d-flex ps-2">
+                            <div class="rr">
+                                <img src="{{ order.product.image.url }}" alt="{{ order.product.name }}">
+                            </div>
+
+                            <div class="rrr w-100">
+                                <p>{{ order.product.name }}</p> 
+                                <p><span>Size: </span> {{ order.size }}</p>
+                                <p><span>Quantity: </span>{{ order.quantity }} </p>
+                                <p class="iirr d-flex justify-content-between">
+                                    <span class="price">Price: ${{ order.total_price }} </span> 
+                                    <span class="delivery-status">Delivery Status: Pending</span> 
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                {% endfor %}
+                </ul>
+            {% else %}
+                <p>You have no past orders.</p>
+            {% endif %}
+                
+            </div>
+        </div>    
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+
+<div class="mai">
+   <div class="login">
+      <h2>User Login</h2>
+      <form method="POST" class="custom-form" >
+         {% csrf_token %}
+         {{form.as_p}}
+         <button>Login</button> 
+      </form>
+      <p>dont have an account? <a href="{% url 'register' %}">Register Here</a></p>
+   </div>
+</div>
+
+
+{% endblock %}

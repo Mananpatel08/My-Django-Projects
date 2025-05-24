@@ -1,0 +1,213 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    margin: 0;
+    padding: 0;
+}
+
+/* Gift Section */
+.gift {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+    padding: 20px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.mgift {
+    display: flex;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 900px;
+    margin-bottom: 50px;
+}
+
+/* Left Side - Gift Image */
+.le {
+    flex: 1;
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.le img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 8px;
+}
+
+/* Right Side - Gift Details */
+.ri {
+    flex: 1;
+    padding: 20px;
+    padding-right: 40px;
+}
+
+.ri h1 {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 500;
+    font-size: 26px;
+    margin-bottom: 10px;
+}
+
+.ri p {
+    color: #555;
+    font-size: 14px;
+}
+
+label.ok{
+    font-size: 14px;
+}
+label{
+    font-size: 14px;
+}
+/* Amount Selection */
+.amount-options {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.amount-options input {
+    display: none;
+}
+.amount-options label {
+    background: #eee;
+    padding: 8px 15px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.amount-options input:checked + label {
+    background: black;
+    color: white;
+}
+
+.recipient input{
+    display: none;
+}
+.recipient label{
+    background: #eee;
+    padding: 8px 15px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
+}
+.recipient input:checked + label{
+    background: black;
+    color: white;
+}
+
+/* Quantity */
+.quantity {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    
+}
+
+.quantity button {
+    background: #ddd;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 3px;
+}
+
+.quantity input {
+    width: 40px;
+    text-align: center;
+    font-size: 16px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Recipient Details */
+.recipient {
+    margin-bottom: 15px;
+}
+
+.recipient button {
+    background: #ddd;
+    border: none;
+    padding: 8px 12px;
+    margin-right: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+
+.recipient button.active {
+    background: black;
+    color: white;
+}
+
+.recipient input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+/* Delivery Date */
+.delivery {
+    margin-bottom: 15px;
+}
+
+.delivery input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+/* Message */
+.message {
+    margin-bottom: 20px;
+}
+
+.message textarea {
+    resize: none;
+    width: 100%;
+    height: 80px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+/* Buy Now Button */
+#buy-now-btn {
+    width: 100%;
+    padding: 10px;
+    background: black;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#buy-now-btn:hover {
+    background: #333;
+}

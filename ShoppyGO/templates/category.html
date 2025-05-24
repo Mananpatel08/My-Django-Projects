@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %}
+Category | ShoppyGo
+{% endblock  %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/category.css' %}">
+
+<div class="divider">
+    <span class="fw-light">CATEGORIES</span>
+</div>
+
+<section class="category d-flex justify-content-center w-100">
+
+    <div class="select d-flex gap-4">
+
+        <div class="mens" data-aos="fade" >
+            <a href="{% url 'mens' %}">
+            <button class="border border-0">
+                <p>MEN</p>
+            </button>
+            </a>
+        </div>
+
+        <div class="womens" data-aos="fade">
+            <a href="{% url 'womens' %}">
+            <button class="border border-0">
+                <p>WOMEN</p>
+            </button>
+            </a>
+        </div>
+
+        <div class="accessories" data-aos="fade">
+            <a href="{% url 'style' %}">
+            <button class="border border-0">
+                <p>STYLE</p>
+            </button>
+        </a>
+        </div>
+
+        <div class="skincare " data-aos="fade">
+        <a href="{% url 'skin'%}">
+            <button class="border border-0">
+                <p>SKIN</p>
+            </button>
+        </a>
+        </div>
+
+        <div class="luxe border" data-aos="fade">
+            <a href="{% url 'luxe' %}">
+            <button class="border border-0">
+                <p>LUXE</p>
+            </button>
+            </a>
+        </div>
+        
+    </div>
+
+
+</section>
+
+{% endblock  %}

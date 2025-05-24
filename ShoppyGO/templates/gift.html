@@ -1,0 +1,86 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %}
+Gift Card | ShoppyGo
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/gift2.css' %}">
+
+<section class="gift">
+    <div class="mgift">
+        <div class="le">
+            <img src="{% static 'default/gift.webp' %}" alt="Gift Card">
+        </div>
+        <div class="ri">
+            <h1>eGift Card</h1>
+            <p>You can not go wrong with a gift card. Choose an amount and write a personalized message to make this gift your own.</p>
+            
+            <!-- Amount Selection -->
+            <div class="amount">
+                <label class="ok">Amount</label>
+                <div class="amount-options">
+                    <input type="radio" name="amount" value="25" id="amount-25" checked>
+                    <label for="amount-25">$25</label>
+
+                    <input type="radio" name="amount" value="50" id="amount-50">
+                    <label for="amount-50">$50</label>
+
+                    <input type="radio" name="amount" value="100" id="amount-100">
+                    <label for="amount-100">$100</label>
+
+                    <input type="radio" name="amount" value="150" id="amount-150">
+                    <label for="amount-150">$150</label>
+
+                    <input type="radio" name="amount" value="200" id="amount-200">
+                    <label for="amount-200">$200</label>
+                </div>
+            </div>
+
+            <!-- Quantity Selection -->
+            <div class="quantity">
+                <label>Quantity</label>
+                <div class="qq">
+                    <button type="button" id="decrease-qty">-</button>
+                    <input type="number" id="quantity" value="1" min="1">
+                    <button type="button" id="increase-qty">+</button>
+                </div>
+            </div>
+
+            <!-- Recipient Details -->
+            <div class="recipient">
+                <p class="m-0 fs-7">Who's the gift card for?</p>
+                
+                <input type="radio" name="recipient" value="For someone else" id="someone" checked>
+                <label for="someone">For someone else</label>
+
+                <input type="radio" name="recipient" value="For myself" id="my" checked>
+                <label for="my">For myself</label>
+                
+                <input type="email" id="recipient-email" placeholder="Recipient email *" required>
+                <input type="text" id="recipient-name" placeholder="Recipient name">
+            </div>
+
+            <!-- Delivery Date -->
+            <div class="delivery">
+                <label>Delivery date</label>
+                <input type="date" id="delivery-date">
+            </div>
+
+            <!-- Message -->
+            <div class="message">
+                <label>Message</label>
+                <textarea id="message" placeholder="Write a message..."></textarea>
+            </div>
+
+            <!-- Buy Now Button -->
+            <button id="buy-now-btn">Buy Now</button>
+            
+        </div>
+    </div>
+</section>
+
+<script src="https://js.stripe.com/v3/"></script>
+<script src="{% static 'js/gift.js' %}"></script>
+{% endblock %}

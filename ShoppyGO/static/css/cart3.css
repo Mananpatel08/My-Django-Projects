@@ -1,0 +1,54 @@
+.cart{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 100px;
+}
+.subcart{
+    width: 70%;
+    display: flex;
+    font-family: "Josefin Sans", serif;
+    font-weight: 300;
+    gap: 50px;
+}
+.left{
+    width: 70%;
+}
+.right{
+    width: 30%;
+}
+.left ul{
+    list-style: none;
+}
+.ppc{
+    display: flex
+}
+.ppfc{
+    display: flex;
+    width: 100%;
+}
+.ligg{
+    width: 60%;
+    gap: 20px;
+}
+.rigg{
+    width: 40%;
+}
+.btww{
+    background-color: rgb(100, 123, 110);
+    font-family: "Josefin Sans", serif;
+    font-weight: 300;
+    padding: 8px;
+    border: none;
+    color: #ffffff;
+    transition: background-color 0.3s ease-in-out;
+}
+.btww:hover{
+    background-color: rgb(46, 48, 47);
+}
+.yes .empty{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 300px;
+}

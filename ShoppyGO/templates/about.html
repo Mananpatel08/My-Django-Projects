@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block title %}
+About | ShoppyGo
+{% endblock  %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+
+<div class="divider">
+    <span class="fw-light">BEHIND THE BRAND</span>
+</div>
+  
+<section class="about">
+
+    <div class="photos" data-aos="fade">
+        <div class="leaf"><img src="{% static 'default/about_img/leaf.jpg' %}" alt=""></div>
+        <div class="model"><img src="{% static 'default/about_img/model.jpg' %}" alt=""></div>
+    </div>
+    <div class="bio" data-aos="slide-up">
+        <div class="mainText"><p class="text-center">SoppyGo is a fashion e-commerce website offering trendy clothing, stylish accessories, and premium fashion essentials. With seamless shopping and easy customization, it ensures a top-notch user experience!</p></div>
+        <div class="subText"><p class="text-center">SoppyGo redefines fashion shopping with high-quality trends, exclusive deals, and a seamless experience. From casual wear to statement pieces, find everything in one place. Enjoy fast delivery, secure payments, and effortless style with every purchase.</p></div>
+    </div>
+
+</section>
+
+
+{% endblock  %}

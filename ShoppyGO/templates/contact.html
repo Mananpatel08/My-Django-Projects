@@ -1,0 +1,90 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %}
+Contact | ShoppyGo
+{% endblock  %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/contact.css' %}">
+
+<div class="divider">
+    <span class="fw-light">CONTACT</span>
+</div>
+
+<section class="contact d-flex justify-content-center align-items-center flex-column ">
+        <div class="iin">
+            <p data-aos="slide-down">For all order support, please include your order number and date that your order was placed</p>
+        </div>
+
+        {% if messages %}
+        {% for message in messages %}
+        <p class="fw-medium" style="color: {% if message.tags == 'error' %}red{% else %}green{% endif %};">
+            {{ message }}
+        </p>
+        {% endfor %}
+        {% endif %}
+        
+        <form class="form  d-flex justify-content-center align-items-center flex-column gap-4 " method="post">
+            {% csrf_token %}
+            <div class="first d-flex justify-content-between w-100 gap-3">
+                <div class="d-block w-50">
+                    <label for="first_name" class="custom-label">Enter Your First Name</label>
+                    <p>{{ form.first_name }}</p>
+                </div>
+                <div class="d-block w-50">
+                <label for="last_name" class="custom-label">Enter Your Last Name</label>
+                <p>{{ form.last_name }}</p>
+                </div>
+            </div>
+
+            <div class="first d-flex justify-content-between w-100 gap-3 ">
+                <div class="d-block w-50">
+                    <label for="email" class="custom-label">Enter Your Email</label>
+                   <p> {{ form.email }}</p>
+                </div>
+                <div class="d-block w-50">
+                <label for="phone_number" class="custom-label">Enter Your Phone</label>
+                <p>{{ form.phone_number }}</p>
+                </div>
+            </div>
+
+            <div class="message w-100">
+               <div class="d-flex flex-column">
+                    <label for="message" class="custom-label">Enter Your Message Here</label>
+                    {{ form.message }}
+                </div>
+            </div>
+
+            <button class="fancy" type="submit" id="submit-btn">
+                <span id="btn-text">Submit</span>
+                <span id="btn-spinner" class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+            </button>
+            
+        </form>
+
+</section>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.querySelector(".form");
+        const submitBtn = document.getElementById("submit-btn");
+        const btnText = document.getElementById("btn-text");
+        const btnSpinner = document.getElementById("btn-spinner");
+
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();  // Prevent immediate submission
+            submitBtn.disabled = true;  // Disable button
+            btnText.classList.add("d-none"); // Hide text
+            btnSpinner.classList.remove("d-none"); // Show spinner
+
+            setTimeout(() => {
+                form.submit();  // Submit the form after 2-3 seconds
+            }, 2000); // Change to 3000 for 3 seconds delay
+        });
+    });
+</script>
+
+
+{% endblock  %}

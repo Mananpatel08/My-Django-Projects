@@ -1,0 +1,16 @@
+.branding{
+    color: rgb(255, 255, 255);
+}
+
+.branding h1 {
+    font-family: "Archivo Black", sans-serif;
+    text-align: center;
+    margin-top: 25px;
+}
+.branding h6 {
+    font-family: "Sen", sans-serif;
+    text-align: center;
+    margin-top: -15px;
+   
+}
+

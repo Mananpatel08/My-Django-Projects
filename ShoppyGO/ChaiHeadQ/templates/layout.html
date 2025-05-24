@@ -1,0 +1,167 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>
+        {% block title %} 
+        Tweeter
+        {% endblock %}
+    </title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Sen:wght@400..800&display=swap');
+
+        body {
+            margin: 0px;
+            padding: 0px;
+            background: url("{% static 'images/second.jpg' %}");
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        nav {
+            margin-left: 0px;
+            background-color: rgba(0, 51, 102, 0.85);     
+            width: 100%;
+            height: 65px ;
+            display: flex; 
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        }
+        .left {
+            height: 65px;
+            width: 15%;
+        }
+        .left h6 {
+            margin-top: 14px;
+            margin-left: 30px;
+            font-size: 13px;
+            font-family: "Sen", sans-serif;
+            color: white;
+        }
+        .mid {
+            display: flex;  
+            justify-content: center;  
+            align-items: center;
+            width: 15%;
+        }
+        .sss {
+            height: 40px;
+            width: 142px;
+            padding: 10px 20px;
+            text-align: center;
+            font-size: 15px;
+            color: white;
+            font-family: "Sen", sans-serif;
+            background-color: #1DA1F2;
+            {% comment %} color : white; {% endcomment %}
+            border-style: none;
+        }
+        .mid button:hover {
+            background-color: #1483C4;
+        }
+
+        .right {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            margin-right: 30px;
+            padding: 5px 0px;
+            width: 57%;
+        }
+        .navbar {
+            list-style: none;
+            display: flex;
+            gap: 40px;
+        }
+        .navbar a {
+            font-family: "Sen", sans-serif;
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+        }
+        .navbar button {
+            font-family: "Sen", sans-serif;
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+            background-color: transparent;
+            border-style: none;
+            font-size: 16px;
+        }
+        .navbar button:hover{
+            color: rgba(206, 217, 229, 0.886);
+        }
+        .right .navbar a:hover {
+            color: rgba(206, 217, 229, 0.886);
+        }
+        .user {
+            background-color:Black;
+            {% comment %} margin-right: 10px;  {% endcomment %}
+            display: flex;  
+            justify-content: center;  
+            align-items: center;
+            width: 13%;
+            font-weight: bold;
+            font-family: "Sen", sans-serif;
+            color: rgb(255, 255, 255);
+            gap: 10px;
+        }
+        .user i{
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="left">
+          <h6>
+            T W E E T <br />
+            H U B
+          </h6>
+        </div>
+
+        <div class="mid">
+          <button class='sss'>Membership</button>
+        </div>
+
+        <div class="right">
+            <div class="navbar">
+                
+                <a href="{% url 'tweet_list' %}">Home</a>
+                
+                {% if user.is_authenticated %} 
+                <form method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button type="submit" >Logout</button>
+                </form>
+                
+                {% else %}
+                <a href="{% url 'login' %}">Log in</a>
+                <a href="{% url 'register' %}">Register</a>
+                
+                {% endif %}
+            </div>
+        </div>
+
+        {% if user.is_authenticated %}
+        <div class="user"> 
+            <i class="fa-sharp fa-solid fa-circle-user" style="color: #ffffff;"></i>
+            {{ user.username }}  
+        </div>
+        {% else %}
+        <div class="user"> 
+            <i class="fa-sharp fa-solid fa-circle-user" style="color: #ffffff;"></i>
+            Guest
+        </div>
+        {% endif %}
+
+    </nav>
+
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>
