@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elevator</title>
+    <link rel="stylesheet" href="{% static "css/Lift.css" %}">
+</head>
+<body>
+
+
+    <h1> Elevator Task </h1>
+    <div class="container">
+
+        <form method="POST" id="liftForm" class="custom-form">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type="Submit" >Submit</button>
+        </form>
+        
+        <div class="elevator">
+            <div class="floor9 {% if target_floor == 9 %}lift-position{% endif %}">9</div>
+            <div class="floor8 {% if target_floor == 8 %}lift-position{% endif %}">8</div>
+            <div class="floor7 {% if target_floor == 7 %}lift-position{% endif %}">7</div>
+            <div class="floor6 {% if target_floor == 6 %}lift-position{% endif %}">6</div>
+            <div class="floor5 {% if target_floor == 5 %}lift-position{% endif %}">5</div>
+            <div class="floor4 {% if target_floor == 4 %}lift-position{% endif %}">4</div>
+            <div class="floor3 {% if target_floor == 3 %}lift-position{% endif %}">3</div>
+            <div class="floor2 {% if target_floor == 2 %}lift-position{% endif %}">2</div>
+            <div class="floor1 {% if target_floor == 1 %}lift-position{% endif %}">1</div>
+            <div class="floor0 {% if target_floor == 0 %}lift-position{% endif %}">0</div>
+        </div>
+    </div>
+
+
+    <audio id="arrivedSound" src="{% static 'sound/arrived.mp3' %}" preload="auto"></audio>
+    <audio id="arrivedSound" src="{% static 'sound/move.mp3' %}" preload="auto"></audio>
+    <script src="{% static 'javaScript/Lift_.js' %}"></script>
+</body>
+</html>
